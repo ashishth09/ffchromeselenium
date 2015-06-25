@@ -1,4 +1,4 @@
-FROM selenium/node-base:2.45.0
+FROM selenium/node-base:2.46.0
 MAINTAINER Selenium <selenium-developers@googlegroups.com>
 
 USER root
@@ -7,24 +7,24 @@ USER root
 # Google Chrome
 #===============
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get update -qqy \
-  && apt-get -qqy install \
-    google-chrome-stable \
-  && rm /etc/apt/sources.list.d/google-chrome.list \
-  && rm -rf /var/lib/apt/lists/*
-
+&& echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
+&& apt-get update -qqy \
+&& apt-get -qqy install \
+google-chrome-stable \
+&& rm /etc/apt/sources.list.d/google-chrome.list \
+&& rm -rf /var/lib/apt/lists/*
 #==================
 # Chrome webdriver
 #==================
-ENV CHROME_DRIVER_VERSION 2.14
+ENV CHROME_DRIVER_VERSION 2.16
 RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
-  && rm -rf /opt/selenium/chromedriver \
-  && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
-  && rm /tmp/chromedriver_linux64.zip \
-  && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
-  && chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
-  && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+&& rm -rf /opt/selenium/chromedriver \
+&& unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
+&& rm /tmp/chromedriver_linux64.zip \
+&& mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
+&& chmod 755 /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION \
+&& ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
+
 
 #========================
 # Selenium Configuration
