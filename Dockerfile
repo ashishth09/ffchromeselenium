@@ -51,6 +51,9 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/*
 
 
+ENV SCREEN_WIDTH 1600
+ENV SCREEN_HEIGHT 900
+ENV SCREEN_DEPTH 24
 
 #====================================
 # Scripts to run Selenium Standalone
