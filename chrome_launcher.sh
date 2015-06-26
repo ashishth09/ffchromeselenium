@@ -74,4 +74,3 @@ exec 2> >(exec cat >&2)
 exec -a "$0" "$HERE/chrome" --no-sandbox "$PROFILE_DIRECTORY_FLAG" \
 "$@"
 exec -a "$0" /etc/alternatives/google-chrome --no-sandbox "$@"
-
